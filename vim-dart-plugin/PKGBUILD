@@ -1,0 +1,28 @@
+# Maintainer: Prograpper <ermanzero2008@gmail.com>
+
+pkgname=vim-dart-plugin
+pkgver=0.1.0.r77.g0ba32c9
+pkgrel=1
+pkgdesc='Syntax highlighting for Dart in Vim'
+arch=('any')
+url='https://github.com/dart-lang/dart-vim-plugin'
+license=('BSD')
+depends=('vim-runtime')
+makedepends=('git')
+source=("$pkgname::git+${url}.git")
+sha512sums=('SKIP')
+# validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
+package() {
+    cd "$pkgname"
+    local installpath="$pkgdir/usr/share/vim/vimfiles"
+    install -dm755 "$installpath"
+    cp -rt "$installpath" autoload doc ftdetect ftplugin indent plugin syntax
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

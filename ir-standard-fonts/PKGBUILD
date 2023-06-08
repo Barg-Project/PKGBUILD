@@ -1,0 +1,23 @@
+# Maintainer: Prograpper <ermanzero2008@gmail.com>
+
+pkgname=ir-standard-fonts
+pkgver=20170121
+pkgrel=3
+pkgdesc="Iran Supreme Council of Information and Communication Technology (SCICT) standard Persian fonts."
+url="https://github.com/molaeiali/ir-standard-fonts"
+arch=(any)
+license=('unknown')
+makedepends=('git')
+provides=('ttf-irfonts' "$pkgname")
+conflicts=('ttf-irfonts' "$pkgname")
+replaces=('ttf-irfonts')
+source=("https://github.com/molaeiali/$pkgname/archive/$pkgver.zip")
+sha256sums=('SKIP')
+# validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
+  install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./*.ttf
+}
+

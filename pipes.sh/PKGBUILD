@@ -1,0 +1,23 @@
+# Maintainer: Prograpper <ermanzero2008@gmail.com>
+
+pkgname=pipes.sh
+pkgver=1.3.0
+pkgrel=1
+pkgdesc='Animated pipes terminal screensaver'
+arch=('any')
+url='https://github.com/pipeseroni/pipes.sh'
+license=('MIT')
+depends=('bash>=4.0.0')
+source=("https://github.com/pipeseroni/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('532976dd8dc2d98330c45a8bcb6d7dc19e0b0e30bba8872dcce352361655a426')
+# validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.rst
+}
+

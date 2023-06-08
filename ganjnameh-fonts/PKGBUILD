@@ -1,0 +1,22 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname='ganjnameh-fonts'
+pkgver=0.0.4
+pkgrel=1
+pkgdesc='Ganjanameh: Persian/Arabic Opensource Fonts'
+url='https://github.com/font-store/GanjnamehFont'
+arch=(any)
+license=('OFL-1.1')
+depends=('fontconfig')
+makedepends=('git')
+provides=('ttf-ganjnameh')
+conflicts=('ttf-ganjnameh')
+source=("${url}/releases/download/v${pkgver}/pack.${pkgver}.zip")
+sha512sums=('SKIP')
+
+package() {
+	cd ${srcdir}/fonts/
+	install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
+	install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./*
+}
+

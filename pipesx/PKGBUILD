@@ -1,0 +1,22 @@
+# Maintainer: Prograpper <ermanzero2008@gmail.com>
+
+pkgname=pipesx
+pkgver=1.1.0
+pkgrel=1
+pkgdesc='Animated pipes terminal screensaver at an angle'
+arch=('any')
+url='https://github.com/pipeseroni/pipesX.sh'
+license=('MIT')
+depends=('bash>=4.0.0')
+source=("${url}/archive/v$pkgver.tar.gz")
+sha512sums=('SKIP')
+# validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
+
+package() {
+  cd "${srcdir}/pipesX.sh-${pkgver}"
+
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
+
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.rst
+}

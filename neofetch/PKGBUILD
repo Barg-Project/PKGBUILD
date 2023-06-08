@@ -1,0 +1,38 @@
+# Maintainer: Prograpper <ermanzero2008@gmail>
+
+pkgname=neofetch
+pkgver=7.1.0
+pkgrel=2
+pkgdesc="A CLI system information tool written in BASH that supports displaying images."
+arch=('any')
+url="https://github.com/dylanaraps/neofetch"
+license=('MIT')
+depends=('bash')
+makedepends=('git')
+backup=('etc/neofetch/config.conf')
+optdepends=(
+  'catimg: Display Images'
+  'chafa: Image to text support'
+  'feh: Wallpaper Display'
+  'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
+  'jp2a: Display Images'
+  'libcaca: Display Images'
+  'nitrogen: Wallpaper Display'
+  'w3m: Display Images'
+  'xdotool: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
+  'xorg-xdpyinfo: Resolution detection (Single Monitor)'
+  'xorg-xprop: Desktop Environment and Window Manager'
+  'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
+  'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
+)
+
+source=("https://github.com/Barg-Project/neofetch/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+# validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	make DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+}
+

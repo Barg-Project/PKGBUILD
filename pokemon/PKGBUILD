@@ -1,0 +1,27 @@
+# Maintainer: Prograpper <ermanzero2008@gmail.com>
+
+pkgname='pokemon'
+pkgver=1
+pkgrel=1
+pkgdesc="show a random pokemon in terminal"
+arch=('any')
+url="https://github.com/erman2008/pokemon"
+license=('GPL')
+depends=('curl')
+makedepends=('gcc')
+provides=('pokemon')
+source=("${url}/archive/refs/tags/${pkgver}.zip")
+md5sums=('SKIP')
+# validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
+
+build() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	gcc pokemon.c -o pokemon
+}
+
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	install -Dm755 ./pokemon  "${pkgdir}/usr/bin/pokemon"
+}
+
