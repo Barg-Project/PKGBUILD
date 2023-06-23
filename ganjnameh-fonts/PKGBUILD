@@ -1,11 +1,9 @@
-# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
-
 pkgname='ganjnameh-fonts'
 pkgver=0.0.4
 pkgrel=1
 pkgdesc='Ganjanameh: Persian/Arabic Opensource Fonts'
 url='https://github.com/font-store/GanjnamehFont'
-arch=(any)
+arch=("x86_64")
 license=('OFL-1.1')
 depends=('fontconfig')
 makedepends=('git')
