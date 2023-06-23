@@ -1,11 +1,9 @@
-# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
-
 pkgname='behdad-fonts'
 pkgver=0.0.3
 pkgrel=1
 pkgdesc="Behdad is a Persian/Arabic font. this font is a gift to Behdad Esfahbod."
 url="https://github.com/font-store/BehdadFont"
-arch=("any")
+arch=("x86_64")
 license=('OFL-1.1')
 depends=('fontconfig')
 provides=('ttf-behdad')
