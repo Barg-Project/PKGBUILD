@@ -1,11 +1,9 @@
-# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
-
-pkgname=gandom-fonts
+pkgname="gandom-fonts"
 pkgver=0.8
 pkgrel=2
 pkgdesc="A beautiful Persian font based on Samim font."
 url="https://rastikerdar.github.io/gandom-font/"
-arch=(any)
+arch=("x86_64")
 license=('OFL')
 provides=('ttf-gandom' "$pkgname")
 conflicts=('ttf-gandom' "$pkgname")
