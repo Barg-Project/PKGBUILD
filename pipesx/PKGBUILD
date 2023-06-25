@@ -4,7 +4,7 @@ pkgname=pipesx
 pkgver=1.1.0
 pkgrel=1
 pkgdesc='Animated pipes terminal screensaver at an angle'
-arch=('any')
+arch=("x86_64")
 url='https://github.com/pipeseroni/pipesX.sh'
 license=('MIT')
 depends=('bash>=4.0.0')

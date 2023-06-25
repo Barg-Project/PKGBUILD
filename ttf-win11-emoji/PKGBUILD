@@ -3,8 +3,8 @@
 pkgname='ttf-win11-emoji'
 pkgver=1
 pkgrel=1
-pkgdesc="Microsoft Windows11 Emojis"
-arch=('any')
+pkgdesc="Microsoft Windows11 Emojis (The pack is not complete)"
+arch=("x86_64")
 url="https://learn.microsoft.com/en-us/typography/font-list/segoe-ui-emoji"
 license=('MIT')
 depends=()
