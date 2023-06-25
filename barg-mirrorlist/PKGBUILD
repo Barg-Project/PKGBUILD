@@ -1,0 +1,17 @@
+# Maintainer : Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname="barg-mirrorlist"
+pkgver=20230625
+pkgrel=1
+pkgdesc='BargOS mirror list for use by pacman'
+arch=('x86_64')
+license=(GPL)
+backup=("etc/pacman.d/barg-mirrorlist")
+url="https://github.com/Barg-Project/mirrorlist"
+source=("https://github.com/Barg-Project/mirrorlist/raw/main/barg-mirrorlist")
+sha512sums=('ea9d4686d8a9db014f4ea474997ddbb329eaf5f504b4d72e684903fc332f37435956faeadbafabd91416552dbecea654dc9edadc79a27d8da561d897037d6b23')
+
+package() {
+	mkdir -p "$pkgdir/etc/pacman.d"
+	install -m644 "$srcdir/barg-mirrorlist" "$pkgdir/etc/pacman.d/"	
+}
