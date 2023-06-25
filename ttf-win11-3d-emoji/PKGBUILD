@@ -14,6 +14,6 @@ sha512sums=('SKIP')
 # validpgpkeys=('43ED9B584913185E7D27A294C382C5DD0557AA1E')
 
 package() {
-	install -Dm644 "3D.ttf" "${pkgdir}/usr/share/fonts/${pkgname#ttf-}/Win11\ 3D.ttf"
+	install -Dm644 "3D.ttf" "${pkgdir}/usr/share/fonts/${pkgname#ttf-}/Win11 3D.ttf"
 }
 
