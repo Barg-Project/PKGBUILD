@@ -1,13 +1,13 @@
 # Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
 
 pkgname=barg-icons
-pkgver=20230630
+pkgver=20230701
 pkgrel=1
 pkgdesc='Official BargOS icons'
 arch=('x86_64')
 url="https://github.com/Barg-Project/logo"
 licence=("GPL")
-source=("${url}/archive/refs/tags/${pkgver}-${pkgrel}.tar.gz")
+source=(${pkgname}::git+${url}.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -16,10 +16,10 @@ pkgver() {
 
 package() {
   install -dm755 ${pkgdir}/usr/share/icons/barg
-  cp -r ${srcdir}/logo-${pkgver}-${pkgrel}/* ${pkgdir}/usr/share/icons/barg
+  cp -r ${srcdir}/${pkgname}/* ${pkgdir}/usr/share/icons/barg
   
   install -dm755 ${pkgdir}/usr/share/pixmaps
-  cp -r ${srcdir}/logo-${pkgver}-${pkgrel}/bargos-logo{.png,.svg,-text.svg,-text.png} ${pkgdir}/usr/share/pixmaps
+  cp -r ${srcdir}/${pkgname}/bargos-logo{.png,.svg,-text.svg,-text.png} ${pkgdir}/usr/share/pixmaps
 
   install -dm755 ${pkgdir}/usr/share/icons/hicolor/16x16/apps
   install -dm755 ${pkgdir}/usr/share/icons/hicolor/22x22/apps
