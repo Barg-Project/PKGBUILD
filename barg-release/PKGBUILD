@@ -1,0 +1,22 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=barg-release
+pkgver=0.1
+pkgrel=1
+pkgdesc="BargOS' release definition"
+arch=("x86_64")
+url="https://github.com/Barg-Project"
+license=('GPL')
+depends=('lsb-release')
+source=('lsb-release')
+install="barg-release.install"
+sha256sums=('b901840c5cde989694144f8ef4ff34bbbff2ecacdc8b8cf32d8c8db40f02109981cab2d0bd76408e9d23e0733dbfefea27b7e0f59da5e606158ab7d928d8a59b')
+
+pkgver() {
+    grep 'DISTRIB_RELEASE='  lsb-release | cut -d '=' -f2
+}
+
+package() {
+    mkdir -p ${pkgdir}/etc
+    install -m644 ${srcdir}/lsb-release ${pkgdir}/etc/
+}

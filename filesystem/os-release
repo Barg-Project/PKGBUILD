@@ -1,0 +1,12 @@
+NAME="BargOS"
+PRETTY_NAME="BargOS"
+ID=bargos
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="32;1;24;144;200"
+HOME_URL="https://github.com/Barg-Project"
+DOCUMENTATION_URL="https://wiki.archlinux.org/"
+SUPPORT_URL="https://t.me/Barg_Gap"
+BUG_REPORT_URL="https://t.me/Barg_Gap"
+PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+LOGO=bargos-logo
