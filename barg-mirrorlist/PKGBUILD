@@ -1,15 +1,15 @@
 # Maintainer : Prograpper (Barg Developer) <ermanzero2008@gmail.com>
 
 pkgname="barg-mirrorlist"
-pkgver=20230701
+pkgver=20230706
 pkgrel=1
 pkgdesc='BargOS mirror list for use by pacman'
 arch=('x86_64')
 license=("GPL")
 url="https://github.com/Barg-Project/mirrorlist"
 backup=("etc/pacman.d/barg-mirrorlist")
-source=("https://github.com/Barg-Project/mirrorlist/raw/main/barg-mirrorlist")
-sha512sums=('ea9d4686d8a9db014f4ea474997ddbb329eaf5f504b4d72e684903fc332f37435956faeadbafabd91416552dbecea654dc9edadc79a27d8da561d897037d6b23')
+source=("${url}/raw/main/barg-mirrorlist")
+sha512sums=('4156873606fd245e24423f081cfb6a46fd4181dd932a5fef79286d6583c5326c15c230af8c8854278be9d1cdf895a848340754a091c6bc59c01c2072dc91aae6')
 
 pkgver() {
   date +%Y%m%d
