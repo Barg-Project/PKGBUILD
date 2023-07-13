@@ -1,0 +1,24 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=ufetch
+pkgver=r172.6abf3c6.barg
+pkgrel=1
+pkgdesc='Tiny system info for Unix-like operating systems'
+arch=("x86_64")
+url="https://github.com/Barg-Project/ufetch"
+license=('MIT')
+makedepends=('git')
+replaces=('ufetch-git')
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).barg"
+}
+
+package() {
+	cd "${srcdir}/${pkgname}"
+	install -Dm755 "${pkgname}-barg" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

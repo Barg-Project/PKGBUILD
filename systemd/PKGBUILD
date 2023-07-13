@@ -7,7 +7,7 @@ pkgname=('systemd'
          'systemd-sysvcompat'
          'systemd-ukify')
 _tag='c2b13f4d9f08d7f4ec113845195ea24bc871e7c0' # git rev-parse v${_tag_name}
-_tag_name=253.5
+_tag_name=253.6
 pkgver="${_tag_name/-/}"
 pkgrel=2
 arch=('x86_64')
@@ -20,8 +20,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls')
 options=('strip')
-source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
-        "git+https://github.com/systemd/systemd#tag=v${_tag_name%.*}?signed"
+source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}"
+        "git+https://github.com/systemd/systemd#tag=v${_tag_name%.*}"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
