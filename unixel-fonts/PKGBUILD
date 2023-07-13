@@ -1,0 +1,22 @@
+# Maintainer: Prograpper <ermanzero2008@gmail.com>
+
+pkgname=unixel-font
+pkgver=1.0
+pkgrel=1
+pkgdesc="Unixel: a new English-Arabic font"
+url="https://github.com/MDarvishi5124/Unixel"
+arch=("x86_64")
+license=('OFL-1.1')
+makedepends=('git')
+provides=('ttf-unixel' "$pkgname")
+conflicts=('ttf-unixel' "$pkgname")
+replaces=('ttf-unixel')
+source=("unixel::git+${url}.git")
+sha512sums=('SKIP')
+
+
+package() {
+  install -d "$pkgdir/usr/share/fonts/${pkgname%-font}"
+  install -t "$pkgdir/usr/share/fonts/${pkgname%-font}" -m644 ${srcdir}/unixel/font/{*.ttf,*.woff*}
+  install -Dm644 ${srcdir}/unixel/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
