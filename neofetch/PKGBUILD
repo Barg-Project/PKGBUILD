@@ -1,8 +1,8 @@
 # Maintainer: Prograpper <ermanzero2008@gmail>
 
 pkgname=neofetch
-pkgver=7.1.0.barg
-pkgrel=2
+pkgver=r5278.1a6134b2.barg
+pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=("x86_64")
 url="https://github.com/Barg-Project/neofetch"
@@ -27,11 +27,16 @@ optdepends=(
 )
 
 source=("git+${url}.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).barg"
+}
 
 package() {
-	cd ${srcdir}/${pkgname}
-	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	  cd ${srcdir}/${pkgname}
+	  make DESTDIR="$pkgdir" install
+	  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
