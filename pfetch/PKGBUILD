@@ -1,0 +1,23 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=pfetch
+pkgver=r437.227f7b5.barg
+pkgrel=1
+pkgdesc="A pretty system information tool written in POSIX sh."
+arch=("x86_64")
+url="https://github.com/Barg-Project/pfetch"
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+            cd "${srcdir}/${pkgname}"
+            echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).barg"
+}
+
+package () {
+            install -Dm755 "${srcdir}/${pkgname}/pfetch" "${pkgdir}/usr/bin/pfetch"
+}
