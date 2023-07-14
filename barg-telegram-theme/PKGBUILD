@@ -1,0 +1,23 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=barg-telegram-theme
+pkgver=r1.d929a90.barg
+pkgrel=1
+pkgdesc="BargOS Telegram Theme"
+arch=("x86_64")
+url="https://github.com/Barg-Project/${pkgname}"
+license=('none')
+makedepends=('git')
+install="barg-telegram-theme.install"
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+            cd "${srcdir}/${pkgname}"
+            echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).barg"
+}
+
+package () {
+            install -Dm755 ${srcdir}/${pkgname}/barg.tdesktop-theme ${pkgdir}/etc/skel/TelegramTheme/barg.tdesktop-theme
+
+}

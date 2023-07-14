@@ -1,0 +1,22 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=barg-bash-config
+pkgver=r1.0c17a77.barg
+pkgrel=1
+pkgdesc="BargOS Default Bash Config"
+arch=("x86_64")
+url="https://github.com/Barg-Project/${pkgname}"
+license=('none')
+makedepends=("git")
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+            cd "${srcdir}/${pkgname}"
+            echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).barg"
+}
+
+package () {
+            install -Dm755 ${srcdir}/${pkgname}/bash.bashrc ${pkgdir}/etc/bash.bashrc
+            install -Dm755 ${srcdir}/${pkgname}/bash.bashrc ${pkgdir}/etc/skel/.bashrc
+}

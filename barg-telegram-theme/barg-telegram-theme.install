@@ -1,0 +1,17 @@
+post_install() {
+    echo ""
+    echo ""
+    echo "Don't Forget Import this theme from Telegram Desktop"
+    echo "Telegram Theme File store at : ~/TelegramTheme/barg.tdesktop-theme"
+    echo ""
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo ""
+    echo "Don't Forget Import this theme from Telegram Desktop"
+    echo "Telegram Theme File store at : ~/TelegramTheme/barg.tdesktop-theme"
+    echo ""
+    echo ""
+}

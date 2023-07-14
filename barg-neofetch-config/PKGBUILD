@@ -1,0 +1,21 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=barg-neofetch-config
+pkgver=r1.bb2b6ad.barg
+pkgrel=1
+pkgdesc="BargOS Default Neofetch Config"
+arch=("x86_64")
+url="https://github.com/Barg-Project/${pkgname}"
+license=('none')
+makedepends=('git')
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+            cd "${srcdir}/${pkgname}"
+            echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD).barg"
+}
+
+package () {
+            install -Dm755 ${srcdir}/${pkgname}/config.conf ${pkgdir}/etc/skel/.config/neofetch/config.conf
+}
