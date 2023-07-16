@@ -1,0 +1,18 @@
+# Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
+
+pkgname=autopkg
+pkgver=1.barg
+pkgrel=1
+pkgdesc="Automatic Package Builder for BargOS"
+arch=("x86_64")
+url="https://github.com/Barg-Project/${pkgname}"
+license=('GPL3')
+makedepends=('git')
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+
+package () {
+            install -Dm755 ${srcdir}/${pkgname}/autopkg ${pkgdir}/usr/bin/autopkg
+            install -Dm644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
