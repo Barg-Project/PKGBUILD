@@ -8,7 +8,7 @@ pkgdesc='Up to date simple useragent faker with real world database'
 arch=('x86_64')
 url=https://github.com/hellysmile/fake-useragent
 license=('Apache')
-depends=(python python-importlib-metadata)
+depends=('python' 'python-importlib-metadata')
 makedepends=(
   'python-setuptools'
   'python-build'
