@@ -1,8 +1,8 @@
 # Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
 
 pkgname=autopkg
-pkgver=1.barg
-pkgrel=2
+pkgver=1.0.1.barg
+pkgrel=1
 pkgdesc="Automatic Package Builder for BargOS"
 arch=("x86_64")
 url="https://github.com/Barg-Project/${pkgname}"
