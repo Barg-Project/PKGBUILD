@@ -6,8 +6,8 @@ pkgname=('systemd'
          'systemd-resolvconf'
          'systemd-sysvcompat'
          'systemd-ukify')
-_tag='c2b13f4d9f08d7f4ec113845195ea24bc871e7c0' # git rev-parse v${_tag_name}
-_tag_name=253.6
+_tag='a2ca1a60b068280a9b54f1e2c9bb486350dd9bfa' # git rev-parse v${_tag_name}
+_tag_name=254-rc2
 pkgver="${_tag_name/-/}"
 pkgrel=2
 arch=('x86_64')
@@ -15,10 +15,11 @@ url='https://github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
-             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
+             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
-             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls')
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools')
+checkdepends=('python-pefile')
 options=('strip')
 source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}"
         "git+https://github.com/systemd/systemd#tag=v${_tag_name%.*}"
@@ -62,8 +63,6 @@ sha512sums=('SKIP'
             'SKIP')
 
 _backports=(
-  # Revert "core/service: when resetting PID also reset known flag"
-  '996b00ede87d6a870332e63974a7d4def3c2f1b0'
 )
 
 _reverts=(
@@ -75,18 +74,16 @@ prepare() {
   # add upstream repository for cherry-picking
   git remote add -f upstream ../systemd
 
-  local _c
+  local _c _l
   for _c in "${_backports[@]}"; do
-    if [[ $_c == *..* ]]; then
-      git log --oneline --reverse "${_c}"
-    else
-      git log --oneline -1 "${_c}"
-    fi
-    git cherry-pick -n -m1 "${_c}"
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
   done
   for _c in "${_reverts[@]}"; do
-    git log --oneline -1 "${_c}"
-    git revert -n "${_c}"
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
   done
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
@@ -111,12 +108,12 @@ build() {
   local _meson_options=(
     # internal version comparison is incompatible with pacman:
     #   249~rc1 < 249 < 249.1 < 249rc
-    -Dversion-tag="${_tag_name/-/\~}-${pkgrel}-barg"
+    -Dversion-tag="${_tag_name/-/\~}-${pkgrel}-arch"
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
+    -Dbootloader=true
     -Dbpf-framework=true
-    -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
     -Dlz4=true
@@ -144,7 +141,7 @@ build() {
     -Dsbat-distro-summary='BargOS'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://github.com/Barg-Project/PKGBUILD/tree/main/${pkgname}"
+    -Dsbat-distro-url="https://github.com/Barg-Project/PKGBUILD/tree/main/${pkgname}/"
   )
 
   arch-meson "$pkgbase-stable" build "${_meson_options[@]}"
@@ -195,6 +192,7 @@ package_systemd() {
           etc/systemd/system.conf
           etc/systemd/timesyncd.conf
           etc/systemd/user.conf
+          etc/udev/iocost.conf
           etc/udev/udev.conf)
   install=systemd.install
 
