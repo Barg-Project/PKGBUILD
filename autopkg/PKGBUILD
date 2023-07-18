@@ -2,7 +2,7 @@
 
 pkgname=autopkg
 pkgver=1.barg
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Package Builder for BargOS"
 arch=("x86_64")
 url="https://github.com/Barg-Project/${pkgname}"
