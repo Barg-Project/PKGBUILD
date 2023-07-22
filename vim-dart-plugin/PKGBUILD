@@ -1,7 +1,7 @@
 # Maintainer: Prograpper <ermanzero2008@gmail.com>
 
 pkgname=vim-dart-plugin
-pkgver=0.1.0.r77.g0ba32c9
+pkgver=0.1.0.r78.g928302e
 pkgrel=1
 pkgdesc='Syntax highlighting for Dart in Vim'
 arch=("x86_64")

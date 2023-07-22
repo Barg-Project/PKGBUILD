@@ -1,7 +1,7 @@
 # Maintainer: Prograpper (Barg Developer) <ermanzero2008@gmail.com>
 
 pkgname=barg-artwork
-pkgver=20230701
+pkgver=20230722
 pkgrel=1
 pkgdesc='Official BargOS Logo & Icons & Wallpapers'
 arch=('x86_64')

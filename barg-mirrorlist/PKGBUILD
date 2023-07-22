@@ -1,7 +1,7 @@
 # Maintainer : Prograpper (Barg Developer) <ermanzero2008@gmail.com>
 
 pkgname="barg-mirrorlist"
-pkgver=20230706
+pkgver=20230722
 pkgrel=1
 pkgdesc='BargOS mirror list for use by pacman'
 arch=('x86_64')
